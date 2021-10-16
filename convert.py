@@ -28,25 +28,36 @@ the current working dir!
 
 def convert_to_mp3():
     for file in os.listdir(os.getcwd()):
+        if file == "convert.py":
+            continue
         try:
-            os.system(f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp3"''')
+            os.system(
+                f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp3"''')
         except:
             continue
 
 
 def convert_to_mp4():
     for file in os.listdir(os.getcwd()):
+        if file == "convert.py":
+            continue
         try:
-            os.system(f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp4"''')
+            os.system(
+                f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp4"''')
         except:
             pass
 
+
 def convert_to_cust(cust_file_ex):
     for file in os.listdir(os.getcwd()):
+        if file == "convert.py":
+            continue
         try:
-            os.system(f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.{cust_file_ex}"''')
+            os.system(
+                f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.{cust_file_ex}"''')
         except:
             pass
+
 
 def MAIN_PROGRAM():
     show_logo()
@@ -69,7 +80,5 @@ def MAIN_PROGRAM():
         MAIN_PROGRAM()
 
 
-
 if __name__ == "__main__":
     MAIN_PROGRAM()
-
