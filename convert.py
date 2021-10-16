@@ -13,16 +13,16 @@ def clear_screen():
 def show_logo():
     clear_screen()
     print("""
-  __  __ _____ ____ 
- |  \/  |  ___/ ___|
- | |\/| | |_ | |    
- | |  | |  _|| |___ 
- |_|  |_|_|   \____|
-Media File Converter
-   by ZeaCeR#5641
+            __  __ _____ ____ 
+            |  \/  |  ___/ ___|
+            | |\/| | |_ | |    
+            | |  | |  _|| |___ 
+            |_|  |_|_|   \____|
+            Media File Converter
+              by ZeaCeR#5641
 
-Only have media files in
-the current working dir!
+           Only have media files in
+           the current working dir!
     """)
 
 
@@ -35,6 +35,17 @@ def convert_to_mp3():
                 f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp3"''')
         except:
             continue
+
+
+def convert_to_mp4():
+    for file in os.listdir(os.getcwd()):
+        if file == "convert.py":
+            continue
+        try:
+            os.system(
+                f'''ffmpeg -i "{file}" "{''.join(file.split('.')[:-1])}.mp4"''')
+        except:
+            pass
 
 
 def convert_to_mp4():
@@ -62,9 +73,10 @@ def convert_to_cust(cust_file_ex):
 def MAIN_PROGRAM():
     show_logo()
     print("""
-[1] .* to mp3
-[2] .* to mp4
-[3] .* to custom
+    [1] .* to mp3
+    [2] .* to mp4
+    [3] .* to mkv
+    [4] .* to custom
     """)
     main_opt = input("[+] Please select an option: ")
     if main_opt == "1":
@@ -72,6 +84,8 @@ def MAIN_PROGRAM():
     elif main_opt == "2":
         convert_to_mp4()
     elif main_opt == "3":
+        convert_to_mp4()
+    elif main_opt == "4":
         cfext = input("[+] Enter the custom file format: ")
         convert_to_cust(cfext)
     else:
